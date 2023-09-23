@@ -48,7 +48,7 @@ export class Die {
   }
   // Should return a SummedRoll
   rollMultipleAndSum(totalRolls) {
-    throw new Error("Method not implemented.");
+    return new SummedRoll(this.rollMultiple(totalRolls));
   }
 
 }
