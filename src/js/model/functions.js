@@ -14,5 +14,5 @@
 
 // Should take a number argument >= 1 and return a number value
 export const generateRandomNumber = (upperBound) => {
-  throw new Error("Method not implemented.");
+  return Math.floor(Math.random() * upperBound) + 1;
 }
