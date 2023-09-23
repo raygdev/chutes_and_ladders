@@ -21,11 +21,11 @@ export class SummedRoll {
   }
   // Shoud return an array of numbers
   rollValues() {
-    throw new Error("Method not implemented.");
+    return[...this.#rolls];
   }
   // Should return a sum of all the roles as a number value
   sum() {
-    throw new Error("Method not implemented.");
+    return this.rollValues().reduce((prev, curr) => prev + curr);
   }
 }
 
