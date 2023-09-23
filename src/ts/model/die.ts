@@ -13,28 +13,33 @@
 // limitations under the License.
 
 import { IDie, ISummedRoll } from "./interfaces";
+import { generateRandomNumber } from "./functions";
 
 export class SummedRoll implements ISummedRoll {
+  constructor(private rolls: number[]){}
   rollValues(): number[] {
-    throw new Error("Method not implemented.");
+    return [...this.rolls];
   }
   sum(): number {
-    throw new Error("Method not implemented.");
+    return this.rollValues().reduce((prev, curr) => prev + curr);
   }
 }
 
 export class Die implements IDie {
+  
+  constructor(private numberOfSides: number){}
+
   get sides(): number {
-    throw new Error("Method not implemented.");
+    return this.numberOfSides;
   }
   roll(): number {
-    throw new Error("Method not implemented.");
+    return generateRandomNumber(this.sides);
   }
   rollMultiple(totalRolls: number): number[] {
-    throw new Error("Method not implemented.");
+    return [...new Array(totalRolls)].map<number>(_ => this.roll())
   }
   rollMultipleAndSum(totalRolls: number): ISummedRoll {
-    throw new Error("Method not implemented.");
+    return new SummedRoll(this.rollMultiple(totalRolls))
   }
 
 }
