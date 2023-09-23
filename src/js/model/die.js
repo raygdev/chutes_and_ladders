@@ -28,6 +28,10 @@ export class SummedRoll {
 }
 
 export class Die {
+  #numberOfSides;
+  constructor(numberOfSides) {
+    this.#numberOfSides = numberOfSides
+  }
   // Should return a number of sides
   get sides() {
     throw new Error("Method not implemented.");
