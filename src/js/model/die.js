@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { generateRandomNumber } from "./functions";
+
 export class SummedRoll {
   #rolls;
   constructor(rolls) {
@@ -38,7 +40,7 @@ export class Die {
   }
   // Should return a random number between one and the total sides
   roll() {
-    throw new Error("Method not implemented.");
+    return generateRandomNumber(this.sides);
   }
   // Should return an array of numbers
   rollMultiple(totalRolls) {
