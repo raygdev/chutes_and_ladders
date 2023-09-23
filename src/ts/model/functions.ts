@@ -12,6 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import {ISpace} from "./interfaces";
+
 export const generateRandomNumber = (upperBound : number) : number => {
   return Math.floor(Math.random() * upperBound) + 1
 }
+
+export const LastSpaceValidator = (space : ISpace) : boolean  => {
+  return false;
+}
+
+export const FirstSpaceValidator = (space : ISpace) : boolean => {
+  return false;
+}
+
+export const ALL_VALIDATORS = [LastSpaceValidator, FirstSpaceValidator];

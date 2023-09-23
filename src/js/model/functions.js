@@ -16,3 +16,15 @@
 export const generateRandomNumber = (upperBound) => {
   return Math.floor(Math.random() * upperBound) + 1;
 }
+
+// Validator functions
+
+export const LastSpaceValidator = (space) => {
+  return false;
+}
+
+export const FirstSpaceValidator = (space) => {
+  return false;
+}
+
+export const ALL_VALIDATORS = [LastSpaceValidator, FirstSpaceValidator];
