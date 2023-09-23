@@ -13,5 +13,5 @@
 // limitations under the License.
 
 export const generateRandomNumber = (upperBound : number) : number => {
-  throw new Error("Method not implemented.");
+  return Math.floor(Math.random() * upperBound) + 1
 }
