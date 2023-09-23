@@ -13,6 +13,10 @@
 // limitations under the License.
 
 export class SummedRoll {
+  #rolls;
+  constructor(rolls) {
+    this.#rolls = rolls
+  }
   // Shoud return an array of numbers
   rollValues() {
     throw new Error("Method not implemented.");
