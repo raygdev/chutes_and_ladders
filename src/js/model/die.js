@@ -34,7 +34,7 @@ export class Die {
   }
   // Should return a number of sides
   get sides() {
-    throw new Error("Method not implemented.");
+    return this.#numberOfSides;
   }
   // Should return a random number between one and the total sides
   roll() {
