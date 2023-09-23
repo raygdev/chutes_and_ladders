@@ -44,7 +44,7 @@ export class Die {
   }
   // Should return an array of numbers
   rollMultiple(totalRolls) {
-    throw new Error("Method not implemented.");
+    return [...new Array(totalRolls)].map(_ => this.roll());
   }
   // Should return a SummedRoll
   rollMultipleAndSum(totalRolls) {
