@@ -16,8 +16,11 @@ import { generateRandomNumber } from "./functions";
 
 export class SummedRoll {
   #rolls;
+  #summed;
   constructor(rolls) {
-    this.#rolls = rolls
+    this.#rolls = [...rolls]
+    this.#summed = [...rolls].reduce((prev, curr) => prev + curr)
+
   }
   // Shoud return an array of numbers
   rollValues() {
@@ -25,7 +28,7 @@ export class SummedRoll {
   }
   // Should return a sum of all the roles as a number value
   sum() {
-    return this.rollValues().reduce((prev, curr) => prev + curr);
+    return this.#summed;
   }
 }
 
