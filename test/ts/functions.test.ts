@@ -13,7 +13,22 @@
 // limitations under the License.
 
 import '../../src/ts/model/die'
+import { generateRandomNumber } from '../../src/ts/model/functions'
 
-test('test random number function', () => {
-  throw new Error("Method not implemented.");
+test('test random number function returns >=1 and <=6 100 times', () => {
+  let times = 100
+  for(let i = 0; i < times; i++) {
+    let number = generateRandomNumber(6)
+    expect(number).toBeGreaterThanOrEqual(1)
+    expect(number).toBeLessThanOrEqual(6)
+  }
+})
+
+test('test random number function returns >=1 and <=20 100 times', () => {
+  let times = 100
+  for(let i = 0; i < times; i++) {
+    let number = generateRandomNumber(20)
+    expect(number).toBeGreaterThanOrEqual(1)
+    expect(number).toBeLessThanOrEqual(20)
+  }
 })

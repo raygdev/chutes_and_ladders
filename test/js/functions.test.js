@@ -15,27 +15,23 @@
 import '../../src/js/model/functions'
 import { generateRandomNumber } from '../../src/js/model/functions'
 
-test('Generates a random number between 1 and 6', () => {
-  let random1 = generateRandomNumber(6)
-  let random2 = generateRandomNumber(6)
-  let random3 = generateRandomNumber(6)
-  expect(random1).toBeGreaterThanOrEqual(1)
-  expect(random1).toBeLessThanOrEqual(6)
-  expect(random2).toBeGreaterThanOrEqual(1)
-  expect(random2).toBeLessThanOrEqual(6)
-  expect(random3).toBeGreaterThanOrEqual(1)
-  expect(random3).toBeLessThanOrEqual(6)
-  
+let timesToCall;
+beforeEach(() => {
+  timesToCall = 100
 })
+
+test('Generates a random number between 1 and 6', () => {
+  for(let i = 0; i < timesToCall; i++){
+    let random = generateRandomNumber(6)
+    expect(random).toBeGreaterThanOrEqual(1)
+  } 
+})
+
 test('Generates a random number between 1 and 20', () => {
-  let random1 = generateRandomNumber(20)
-  let random2 = generateRandomNumber(20)
-  let random3 = generateRandomNumber(20)
-  expect(random1).toBeGreaterThanOrEqual(1)
-  expect(random1).toBeLessThanOrEqual(20)
-  expect(random2).toBeGreaterThanOrEqual(1)
-  expect(random2).toBeLessThanOrEqual(20)
-  expect(random3).toBeGreaterThanOrEqual(1)
-  expect(random3).toBeLessThanOrEqual(20)
-  
+  for(let i = 0; i < timesToCall; i++){
+    let random = generateRandomNumber(20)
+    expect(random).toBeGreaterThanOrEqual(1)
+    expect(random).toBeLessThanOrEqual(20)
+
+  }
 })

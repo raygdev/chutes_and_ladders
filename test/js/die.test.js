@@ -13,7 +13,7 @@
 // limitations under the License.
 
 import '../../src/js/model/die'
-import { Die } from '../../src/js/model/die'
+import { Die, SummedRoll } from '../../src/js/model/die'
 
 
 
@@ -31,9 +31,13 @@ test('The die has 6 sides', () => {
 })
 
 test('The die rolls a number between 1 and 6', () => {
-  let roll1 = die.roll()
-  expect(roll1).toBeGreaterThanOrEqual(1)
-  expect(roll1).toBeLessThanOrEqual(6)
+  let timeToRoll = 100
+  for(let i = 0; i < timeToRoll; i++){
+    let roll = die.roll()
+    expect(roll).toBeGreaterThanOrEqual(1)
+    expect(roll).toBeLessThanOrEqual(6)
+  }
+
 })
 
 test('rollMultiple should be an array', () => {
@@ -57,6 +61,20 @@ test('Each roll should be <= 6 or >= 1', () => {
     expect(number).toBeLessThanOrEqual(6)
     expect(number).toBeGreaterThanOrEqual(1)
   })
+})
+
+test("rollMultipleandSum sum should return an instance of SummedRoll",() => {
+  let multipleRolls = die.rollMultipleAndSum()
+  expect(multipleRolls).toBeInstanceOf(SummedRoll)
+})
+
+test("SummedRoll should have rollValues and sum", () => {
+  let summedRoll =  new SummedRoll([1,3,5])
+  let rolls = summedRoll.rollValues
+  let sum = summedRoll.sum
+  expect(rolls).toBeTruthy()
+  expect(rolls).toHaveLength(3)
+  expect(sum).toEqual(9)
 })
 
 
