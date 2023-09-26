@@ -16,8 +16,11 @@ import { IDie, ISummedRoll } from "./interfaces";
 import { generateRandomNumber } from "./functions";
 
 export class SummedRoll implements ISummedRoll {
-  constructor(private rolls: number[]){}
-  rollValues(): number[] {
+  private summed: number;
+  constructor(private rolls: number[]){
+    this.summed = rolls.reduce((prev, curr) => prev + curr);
+  }
+
     return [...this.rolls];
   }
   sum(): number {
