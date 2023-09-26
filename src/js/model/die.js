@@ -23,11 +23,11 @@ export class SummedRoll {
 
   }
   // Shoud return an array of numbers
-  rollValues() {
+  get rollValues() {
     return[...this.#rolls];
   }
   // Should return a sum of all the roles as a number value
-  sum() {
+  get sum() {
     return this.#summed;
   }
 }
