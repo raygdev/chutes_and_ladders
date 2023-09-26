@@ -19,7 +19,7 @@ export class SummedRoll {
   #summed;
   constructor(rolls) {
     this.#rolls = [...rolls]
-    this.#summed = [...rolls].reduce((prev, curr) => prev + curr)
+    this.#summed = this.#rolls.reduce((prev, curr) => prev + curr)
 
   }
   // Shoud return an array of numbers
