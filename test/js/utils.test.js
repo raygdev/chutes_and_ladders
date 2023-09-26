@@ -12,19 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {ISpace} from "./interfaces";
 
-export const generateRandomNumber = (upperBound : number) : number => {
+test('test random number function', () => {
+  // TODO - Test random number generators with valid and invalid ranges
   throw new Error("Method not implemented.");
-}
-
-
-export const LastSpaceValidator = (space : ISpace) : boolean  => {
-  return false;
-}
-
-export const FirstSpaceValidator = (space : ISpace) : boolean => {
-  return false;
-}
-
-export const ALL_VALIDATORS = [LastSpaceValidator, FirstSpaceValidator];
+})
