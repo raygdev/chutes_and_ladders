@@ -21,10 +21,11 @@ export class SummedRoll implements ISummedRoll {
     this.summed = rolls.reduce((prev, curr) => prev + curr);
   }
 
+  get rollValues(): number[] {
     return [...this.rolls];
   }
-  sum(): number {
-    return this.rollValues().reduce((prev, curr) => prev + curr);
+  get sum(): number {
+    return this.summed
   }
 }
 
