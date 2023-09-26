@@ -99,8 +99,8 @@ export interface Game {
 }
 
 export interface ISummedRoll {
-  rollValues() : Array<number>;
-  sum() : number;
+  get rollValues() : Array<number>;
+  get sum() : number;
 }
 
 export interface IDie {
