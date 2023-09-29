@@ -13,7 +13,9 @@
 // limitations under the License.
 
 import '../../src/js/model/die'
-import { Die, SummedRoll } from '../../src/js/model/die'
+import {rollDice, rollSingleDiceMultipleTimes, rollSingleDiceMultipleTimesAndSum} from "../../src/js/model/utils.js";
+import { Die } from '../../src/js/model/die'
+import { SummedRoll } from '../../src/js/model/summed_roll'
 
 
 
@@ -22,7 +24,7 @@ let times6;
 
 beforeEach(() => {
   die = new Die(6)
-  times6 = die.rollMultiple(6)
+  times6 = rollSingleDiceMultipleTimes(6,die)
 })
 
 test('The die has 6 sides', () => {
@@ -45,7 +47,7 @@ test('rollMultiple should be an array', () => {
 })
 
 test('The die can be rolled multiple times', () => {
-  let times7 = die.rollMultiple(7)
+  let times7 = rollSingleDiceMultipleTimes(7,die)
   expect(times6).toHaveLength(6)
   expect(times7).toHaveLength(7)
 })
@@ -64,7 +66,7 @@ test('Each roll should be <= 6 or >= 1', () => {
 })
 
 test("rollMultipleandSum sum should return an instance of SummedRoll",() => {
-  let multipleRolls = die.rollMultipleAndSum()
+  let multipleRolls = rollSingleDiceMultipleTimesAndSum(6,die)
   expect(multipleRolls).toBeInstanceOf(SummedRoll)
 })
 
@@ -78,3 +80,12 @@ test("SummedRoll should have rollValues and sum", () => {
 })
 
 
+test('Test die class', () => {
+  // Example
+  const d6 = new Die(6)
+  for (let i=0;i<100; i++) {
+    let rollValue = rollDice(d6).pop()
+    expect(rollValue).toBeGreaterThanOrEqual(1);
+    expect(rollValue).toBeLessThanOrEqual(d6.sides);
+  }
+})

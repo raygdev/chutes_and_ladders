@@ -13,37 +13,37 @@
 // limitations under the License.
 
 import { IDie, ISummedRoll } from "./interfaces";
-import { generateRandomNumber } from "./functions";
+import utils from "./utils";
 
 export class SummedRoll implements ISummedRoll {
-  private summed: number;
+  private Sum: number;
   constructor(private rolls: number[]){
-    this.summed = rolls.reduce((prev, curr) => prev + curr);
+    this.Sum = rolls.reduce((prev, curr) => prev + curr);
   }
 
-  get rollValues(): number[] {
+  get rolledValues(): number[] {
     return [...this.rolls];
   }
   get sum(): number {
-    return this.summed
+    return this.Sum
   }
 }
 
+export const MINIMUM_SIDES = 4;
+
 export class Die implements IDie {
-  
-  constructor(private numberOfSides: number){}
+  Sides : number = 0;
+
+  constructor(Sides: number) {
+    this.Sides = Sides;
+  }
+
+  roll(): number {
+    return utils.GenerateRandomNumber(this.sides);
+  }
 
   get sides(): number {
-    return this.numberOfSides;
-  }
-  roll(): number {
-    return generateRandomNumber(this.sides);
-  }
-  rollMultiple(totalRolls: number): number[] {
-    return [...new Array(totalRolls)].map<number>(_ => this.roll())
-  }
-  rollMultipleAndSum(totalRolls: number): ISummedRoll {
-    return new SummedRoll(this.rollMultiple(totalRolls))
+    return this.Sides;
   }
 
 }

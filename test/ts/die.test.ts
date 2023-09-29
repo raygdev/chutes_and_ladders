@@ -12,16 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import '../../src/ts/model/functions'
 import {Die, SummedRoll} from '../../src/ts/model/die'
 import { ISummedRoll } from '../../src/ts/model/interfaces';
+import utils from '../../src/ts/model/utils';
+
 
 let die: Die;
 let times6: number[];
 
 beforeEach(() => {
   die = new Die(6)
-  times6 = die.rollMultiple(6)
+  times6 = utils.RollSingleDiceMultipleTimes(6,die)
 })
 
 test('Test die can be called with >=1 and <=6 100 times', () => {
@@ -48,17 +49,18 @@ test("die returns number of sides", () => {
 })
 
 test("rollMultipleAndSum returns an instance of SummedRoll", () => {
-  let summed: ISummedRoll = die.rollMultipleAndSum(6)
-  expect(summed).toBeInstanceOf(SummedRoll)
+  let summed: ISummedRoll = utils.RollSingleDiceMultipleTimesAndSum(6, die)
+  expect(summed).toBeTruthy()
+  expect(summed.rolledValues).toHaveLength(6)
 })
 
 test("SummedRoll returns roll values and sum", () => {
   let summed = new SummedRoll([1,3,5])
   expect(summed).toBeInstanceOf(SummedRoll)
-  expect(Array.isArray(summed.rollValues)).toBe(true)
+  expect(Array.isArray(summed.rolledValues)).toBe(true)
   expect(typeof summed.sum).toBe('number')
   expect(summed.sum).toBe(9)
-  expect(summed.rollValues).toHaveLength(3)
+  expect(summed.rolledValues).toHaveLength(3)
 })
 
 test('paint board', () => {

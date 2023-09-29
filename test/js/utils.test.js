@@ -12,18 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import {ISpace} from "./interfaces";
+import { generateRandomNumber } from '../../src/js/model/utils'
 
-export const generateRandomNumber = (upperBound : number) : number => {
-  return Math.floor(Math.random() * upperBound) + 1
-}
+let timesToCall;
+beforeEach(() => {
+  timesToCall = 100
+})
 
-export const LastSpaceValidator = (space : ISpace) : boolean  => {
-  return false;
-}
+test('Generates a random number between 1 and 6', () => {
+  for(let i = 0; i < timesToCall; i++){
+    let random = generateRandomNumber(6)
+    expect(random).toBeGreaterThanOrEqual(1)
+  } 
+})
 
-export const FirstSpaceValidator = (space : ISpace) : boolean => {
-  return false;
-}
+test('Generates a random number between 1 and 20', () => {
+  for(let i = 0; i < timesToCall; i++){
+    let random = generateRandomNumber(20)
+    expect(random).toBeGreaterThanOrEqual(1)
+    expect(random).toBeLessThanOrEqual(20)
 
-export const ALL_VALIDATORS = [LastSpaceValidator, FirstSpaceValidator];
+  }
+})
