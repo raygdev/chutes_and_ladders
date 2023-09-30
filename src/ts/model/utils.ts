@@ -26,7 +26,7 @@ const GenerateRandomNumber = (upperBound : number) : number => {
  */
 const RollDice = (dice : Array<IDie>) : Array<number> => {
   // TODO - Implement rolling one or more dice once and only once.
-  return []
+  return dice.map(die => die.roll())
 }
 
 
@@ -45,7 +45,7 @@ const RollSingleDiceMultipleTimes = (count: number, die: IDie) : Array<number> =
  */
 const RollMultipleDiceMultipleTimes = (totalRolls : number, ...dice : Array<IDie>) : Array<Array<number>> => {
   // TODO - Implement rolling multiple dice multiple times
-  return [][0]
+  return dice.map(die => [...new Array(totalRolls)].map(() => die.roll()))
 }
 
 /**
@@ -69,7 +69,11 @@ const RollSingleDiceMultipleTimesAndSum = (count: number, die: IDie) : ISummedRo
  */
 const RollMultipleDiceAndSum = (dice: Array<IDie>) : ISummedRoll => {
   // TODO implement rolling multiple dice one time and summing their values
-  return {} as ISummedRoll
+  const rolledDice = RollDice(dice)
+  return {
+    rolledValues: rolledDice,
+    sum: rolledDice.reduce((prev, curr) => prev + curr)
+  } as ISummedRoll
 }
 
 

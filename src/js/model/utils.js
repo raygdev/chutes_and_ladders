@@ -64,5 +64,5 @@ export const rollSingleDiceMultipleTimesAndSum = (count, die) => {
  * @return SummedRoll
  */
 export const rollMultipleAndSum = (...dice) => {
-  return new SummedRoll(rollDice(dice))
+  return new SummedRoll(rollDice(...dice))
 }
