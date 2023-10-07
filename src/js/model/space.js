@@ -118,7 +118,7 @@ export class Space {
    * @return boolean true if the space has players, false otherwise
    */
   get occupied() {
-    // TODO - implement the logic to determine if the space is occupied
+    return this.players.length > 0
   }
 
   /**
