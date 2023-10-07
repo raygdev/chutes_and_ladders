@@ -102,7 +102,6 @@ export class Space {
    */
   set special(location) {
     this.#Special = location
-    return this
   }
 
 
