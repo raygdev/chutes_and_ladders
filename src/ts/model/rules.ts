@@ -23,3 +23,5 @@ const FirstSpaceValidator = (space : ISpace) : boolean => {
   // TODO - implement a validator to determine if the space is the first space
   return false;
 }
+
+export const ALL_VALIDATORS = [LastSpaceValidator, FirstSpaceValidator];

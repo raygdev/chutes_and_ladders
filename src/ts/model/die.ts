@@ -12,7 +12,22 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { IDie } from "./interfaces";
+import { IDie, ISummedRoll } from "./interfaces";
+import utils from "./utils";
+
+export class SummedRoll implements ISummedRoll {
+  private Sum: number;
+  constructor(private rolls: number[]){
+    this.Sum = rolls.reduce((prev, curr) => prev + curr);
+  }
+
+  get rolledValues(): number[] {
+    return [...this.rolls];
+  }
+  get sum(): number {
+    return this.Sum
+  }
+}
 
 export const MINIMUM_SIDES = 4;
 
@@ -24,8 +39,7 @@ export class Die implements IDie {
   }
 
   roll(): number {
-    // TODO - Implement the roll method returning a random number between 1 and the side count.
-    return 0;
+    return utils.GenerateRandomNumber(this.sides);
   }
 
   get sides(): number {

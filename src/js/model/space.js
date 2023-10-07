@@ -27,7 +27,7 @@ export class Space {
   #Type = SpaceType.NORMAL;
   #Next = null
   #Special = null
-  #Players = Array<Player>(0)
+  #Avatar = Array(0)
   constructor(type, value) {
     this.#Type = type
     this.#Value = value
@@ -38,14 +38,19 @@ export class Space {
    * @param avatar
    */
   land(avatar) {
-    // TODO - Implement landing on the space
+    if(this.special) {
+      this.special.land(avatar)
+    } else {
+      this.#Avatar.push(avatar)
+      avatar.location = this
+    }
   }
 
   /**
    * Is a method to be invoked when an avatar leaves a space
    */
   leave() {
-    // TODO - Implement leaving the space
+    this.#Avatar.pop()
   }
 
   /**
@@ -97,7 +102,6 @@ export class Space {
    */
   set special(location) {
     this.#Special = location
-    return this
   }
 
 
@@ -107,14 +111,14 @@ export class Space {
    */
   get players() {
     // returns a copy of the players
-    return [...this.#Players]
+    return [...this.#Avatar]
   }
 
   /**
    * @return boolean true if the space has players, false otherwise
    */
   get occupied() {
-    // TODO - implement the logic to determine if the space is occupied
+    return this.players.length > 0
   }
 
   /**
@@ -123,7 +127,6 @@ export class Space {
    * @return {boolean} true if the space is valid, false otherwise.
    */
   validate(validators) {
-    // TODO - Implement a method that validates the spaces state
-    return false
+    return validators.every(validator => validator() === true)
   }
 }

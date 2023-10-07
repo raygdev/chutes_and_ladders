@@ -16,7 +16,7 @@ import {IDie, ISpace, ISummedRoll} from "./interfaces";
 
 const GenerateRandomNumber = (upperBound : number) : number => {
   // TODO - implement generateRandomNumber as it WILL be used by more than the Die class.
-  throw new Error("Method not implemented.");
+  return Math.floor(Math.random() * upperBound) + 1
 }
 
 /**
@@ -26,13 +26,13 @@ const GenerateRandomNumber = (upperBound : number) : number => {
  */
 const RollDice = (dice : Array<IDie>) : Array<number> => {
   // TODO - Implement rolling one or more dice once and only once.
-  return []
+  return dice.map(die => die.roll())
 }
 
 
 const RollSingleDiceMultipleTimes = (count: number, die: IDie) : Array<number> => {
   // TODO - Implement rolling a single dice multiple times
-  return []
+  return [...new Array(count)].map(() => die.roll())
 }
 
 
@@ -45,7 +45,7 @@ const RollSingleDiceMultipleTimes = (count: number, die: IDie) : Array<number> =
  */
 const RollMultipleDiceMultipleTimes = (totalRolls : number, ...dice : Array<IDie>) : Array<Array<number>> => {
   // TODO - Implement rolling multiple dice multiple times
-  return [][0]
+  return dice.map(die => [...new Array(totalRolls)].map(() => die.roll()))
 }
 
 /**
@@ -55,7 +55,11 @@ const RollMultipleDiceMultipleTimes = (totalRolls : number, ...dice : Array<IDie
  */
 const RollSingleDiceMultipleTimesAndSum = (count: number, die: IDie) : ISummedRoll => {
   // TODO - Implement rolling a single dice multiple times
-  return {} as ISummedRoll
+  let summedRoll = RollSingleDiceMultipleTimes(count, die)
+  return {
+    rolledValues: summedRoll,
+    sum: summedRoll.reduce((prev, curr) => prev + curr)
+  } as ISummedRoll
 }
 
 /**
@@ -65,7 +69,11 @@ const RollSingleDiceMultipleTimesAndSum = (count: number, die: IDie) : ISummedRo
  */
 const RollMultipleDiceAndSum = (dice: Array<IDie>) : ISummedRoll => {
   // TODO implement rolling multiple dice one time and summing their values
-  return {} as ISummedRoll
+  const rolledDice = RollDice(dice)
+  return {
+    rolledValues: rolledDice,
+    sum: rolledDice.reduce((prev, curr) => prev + curr)
+  } as ISummedRoll
 }
 
 

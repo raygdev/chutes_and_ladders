@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
 /**
  * The SummedRoll class represents a way to keep track of the sum of multiple rolls.
  * Player 1 rolls a single dice 3 times and gets the values { [3,1,5], 9 }
@@ -22,6 +23,8 @@ export class SummedRoll {
   #Sum = -1
   constructor(numbers) {
     // TODO - Implement the constructor
+    this.#Numbers = [...numbers]
+    this.#Sum = this.#Numbers.reduce((prev, curr) => prev + curr)
   }
 
   // Should return an array of numbers

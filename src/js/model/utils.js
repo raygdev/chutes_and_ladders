@@ -13,11 +13,10 @@
 // limitations under the License.
 
 // Should take a number argument >= 1 and return a number value
-import {SummedRoll} from "./summed_roll.js";
+import { SummedRoll } from "./summed_roll.js";
 
 export const generateRandomNumber = (upperBound) => {
-  // TODO - Write a method that returns a number from 1 to the upperBound
-  throw new Error("Method not implemented.");
+  return Math.floor(Math.random() * upperBound) + 1;
 }
 
 
@@ -26,14 +25,22 @@ export const generateRandomNumber = (upperBound) => {
  * @param dice the dice to roll
  * @return number[] each dice that was rolled once.
  */
+  // // Should return an array of numbers
+  // rollMultiple(totalRolls) {
+  //   return [...new Array(totalRolls)].map(_ => this.roll());
+  // }
+  // // Should return a SummedRoll
+  // rollMultipleAndSum(totalRolls) {
+  //   return new SummedRoll(this.rollMultiple(totalRolls));
+  // }
 export const rollDice = (...dice) => {
   // TODO - Implement rolling one or more dice once and only once.
-  return []
+  return dice.map(die => die.roll())
 }
 
 export const rollSingleDiceMultipleTimes = (count, die) => {
   // TODO - Implement rolling a single dice multiple times
-  return []
+  return [...new Array(count)].map(() => die.roll())
 }
 
 /**
@@ -44,12 +51,12 @@ export const rollSingleDiceMultipleTimes = (count, die) => {
  */
 export const rollMultipleDiceMultipleTimes = (totalRolls, ...dice) => {
   // TODO - Implement rolling multiple dice multiple times
-  return [][0]
+  return dice.map(die => [...new Array(totalRolls)].map(() => die.roll()))
 }
 
-export const rollSingleDiceMultipleTimesAndSum = (count, dice) => {
+export const rollSingleDiceMultipleTimesAndSum = (count, die) => {
   // TODO - Implement this method
-  return new SummedRoll([]);
+  return new SummedRoll(rollSingleDiceMultipleTimes(count,die));
 }
 /**
  *
@@ -57,5 +64,5 @@ export const rollSingleDiceMultipleTimesAndSum = (count, dice) => {
  * @return SummedRoll
  */
 export const rollMultipleAndSum = (...dice) => {
-  return new SummedRoll(rollDice(dice))
+  return new SummedRoll(rollDice(...dice))
 }
