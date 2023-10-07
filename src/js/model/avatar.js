@@ -47,6 +47,17 @@ export class Avatar {
     }
 
     move(numberOfSpaces) {
-        // TODO - Implement how an Avatar can move between spaces given that it knows it's own location
+        
+        let current = this.location
+       
+        while(current.next && numberOfSpaces > 0) {
+            current = current.next
+            numberOfSpaces--
+        }
+
+        if(numberOfSpaces > 0) return;
+
+        this.location.leave()
+        current.land(this)
     }
 }
