@@ -127,6 +127,6 @@ export class Space {
    * @return {boolean} true if the space is valid, false otherwise.
    */
   validate(validators) {
-    return validators.every(validator => validator() === true)
+    return validators.every(validator => validator(this) === true)
   }
 }
